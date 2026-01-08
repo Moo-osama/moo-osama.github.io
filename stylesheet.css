@@ -161,6 +161,7 @@
 a {
   color: #1772d0;
   text-decoration: none;
+  font-weight: 400;
 }
 
 a:focus,
@@ -171,6 +172,7 @@ a:hover {
 
 body{
   line-height: 1.6em;
+  font-weight: 400;
 }
 td,
 th,
@@ -179,7 +181,8 @@ em,
 p,
 a {
   font-family: 'Candara', 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 16px
+  font-size: 16px;
+  font-weight: 400;
 }
 
 strong {
@@ -196,18 +199,20 @@ p {
 heading {
   font-family: 'Candara', 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 24px;
+  font-weight: 400;
 }
 
 papertitle {
   font-family: 'Candara', 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 18px;
-  font-weight: 700
+  font-weight: 700;
 }
 
 authorname {
   font-family: 'Candara', 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 16px;
   color: #00418A;
+  font-weight: 400;
 }
 authorname:focus,
 authorname:hover {

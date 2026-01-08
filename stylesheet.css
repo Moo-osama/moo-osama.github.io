@@ -219,6 +219,13 @@ authorname-nolink {
 name {
   font-family: 'Candara', 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 32px;
+  font-weight: 400;
+}
+
+.name {
+  font-family: 'Candara', 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 pre {

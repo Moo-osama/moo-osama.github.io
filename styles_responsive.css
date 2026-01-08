@@ -46,6 +46,7 @@
 
   .text {
     text-align: left;
+     font-weight: 400 !important;
   }
 
   .image img {

@@ -19,8 +19,11 @@ role: |
     .os-conf-wrap { margin-top: 0.05rem; }
     .os-conf-chip {
       display: inline-block;
-      background: #eaf2ff;
-      border: 1px solid #bfd7ff;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: transparent;
+      border: none;
       color: #1e40af;
       padding: 0.2rem 0.64rem;
       border-radius: 1rem;
@@ -28,17 +31,53 @@ role: |
       font-weight: 600;
       margin-right: 0.34rem;
       margin-bottom: 0.25rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .os-conf-chip::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      left: 50%;
+      top: 50%;
+      margin-left: -100px;
+      margin-top: -100px;
+      background: conic-gradient(
+        from 0deg,
+        #38bdf8,
+        #818cf8,
+        #c084fc,
+        #f472b6,
+        #38bdf8
+      );
+      z-index: -1;
+      animation: conf-chip-spin 3s linear infinite;
+      animation-delay: var(--chip-delay, 0s);
+    }
+    .os-conf-chip::after {
+      content: '';
+      position: absolute;
+      inset: 1.5px;
+      border-radius: 9999px;
+      background: #eaf2ff;
+      z-index: -1;
+      transition: background 0.15s;
+    }
+    a.os-conf-chip:hover::after { background: #dbeafe; }
+    a.os-conf-chip:hover { color: #1d4ed8; }
+    @keyframes conf-chip-spin {
+      to { transform: rotate(360deg); }
     }
     .dark .os-role-title { color: #e2e8f0; }
     .dark .os-role-sub { color: #cbd5e1; }
     .dark .os-role-meta { color: #94a3b8; }
     .dark .os-role-meta a { color: #93c5fd; }
     .dark .os-role-label { color: #94a3b8; }
-    .dark .os-conf-chip {
-      background: #1e293b;
-      border-color: #334155;
-      color: #bfdbfe;
-    }
+    .dark .os-conf-chip { color: #bfdbfe; }
+    .dark .os-conf-chip::after { background: #1e293b; }
+    .dark a.os-conf-chip:hover::after { background: #1e3a5f; }
+    .dark a.os-conf-chip:hover { color: #93c5fd; }
   </style>
   <div class="os-role-wrap">
     <div class="os-role-title">
@@ -52,10 +91,10 @@ role: |
     </div>
     <div class="os-role-label">First-author at:</div>
     <div class="os-conf-wrap">
-      <span class="os-conf-chip">CVPR 26</span>
-      <span class="os-conf-chip">NeurIPS 25</span>
-      <span class="os-conf-chip">ECCV 24</span>
-      <span class="os-conf-chip">CVPR 24</span>
+      <a href="#all-publications" class="os-conf-chip" style="--chip-delay: 0s">CVPR 26</a>
+      <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/118547" target="_blank" rel="noopener" class="os-conf-chip" style="--chip-delay: -0.75s">NeurIPS 25</a>
+      <a href="https://sjepa.github.io" target="_blank" rel="noopener" class="os-conf-chip" style="--chip-delay: -1.5s">ECCV 24</a>
+      <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Abdelfattah_MaskCLR_Attention-Guided_Contrastive_Learning_for_Robust_Action_Representation_Learning_CVPR_2024_paper.pdf" target="_blank" rel="noopener" class="os-conf-chip" style="--chip-delay: -2.25s">CVPR 24</a>
     </div>
   </div>
 email: mohamed.abdelfattah@epfl.ch
@@ -120,6 +159,13 @@ bio: |
       font-weight: 600;
       margin-right: 0.28rem;
       margin-bottom: 0.25rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    a.os-topic-chip:hover {
+      opacity: 0.8;
+      transform: translateY(-1px);
     }
     .os-chip-multimodal { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
     .os-chip-egocentric { background: #ecfeff; color: #0e7490; border: 1px solid #bae6fd; }
@@ -148,12 +194,12 @@ bio: |
       <span class="os-research-main">My research asks a simple question: <strong>can machines learn strong representations by predicting the world rather than labeling it?</strong></span>
       <span class="os-research-sub">I study multimodal transformers and large language models that integrate perception, motion, and language. By training models to infer missing structure across time and modalities, I develop predictive pretraining methods that yield transferable representations for action recognition, egocentric vision, and world modelling.</span>
       <span style="display:block; margin-bottom:0.2rem;">
-        <span class="os-topic-chip os-chip-multimodal">Multimodal Learning</span>
-        <span class="os-topic-chip os-chip-egocentric">Egocentric Vision</span>
-        <span class="os-topic-chip os-chip-action">Action Recognition</span>
-        <span class="os-topic-chip os-chip-world">World Modelling</span>
-        <span class="os-topic-chip os-chip-selfsup">Self-supervised Learning</span>
-        <span class="os-topic-chip os-chip-llms">LLMs</span>
+        <a href="#all-publications" onclick="window.dispatchEvent(new CustomEvent('pubfilter', {detail: 'Multimodal Learning'}))" class="os-topic-chip os-chip-multimodal">Multimodal Learning</a>
+        <a href="#all-publications" onclick="window.dispatchEvent(new CustomEvent('pubfilter', {detail: 'Egocentric Vision'}))" class="os-topic-chip os-chip-egocentric">Egocentric Vision</a>
+        <a href="#all-publications" onclick="window.dispatchEvent(new CustomEvent('pubfilter', {detail: 'Action Recognition'}))" class="os-topic-chip os-chip-action">Action Recognition</a>
+        <a href="#all-publications" onclick="window.dispatchEvent(new CustomEvent('pubfilter', {detail: 'World Modelling'}))" class="os-topic-chip os-chip-world">World Modelling</a>
+        <a href="#all-publications" onclick="window.dispatchEvent(new CustomEvent('pubfilter', {detail: 'Self-supervised Learning'}))" class="os-topic-chip os-chip-selfsup">Self-supervised Learning</a>
+        <a href="#all-publications" onclick="window.dispatchEvent(new CustomEvent('pubfilter', {detail: 'LLMs'}))" class="os-topic-chip os-chip-llms">LLMs</a>
       </span>
     </span>
   </span>

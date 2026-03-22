@@ -64,7 +64,7 @@
 
 {{ $topic_tags := slice "Multimodal Learning" "Egocentric Vision" "Action Recognition" "World Modelling" "Self-supervised Learning" "LLMs" "Datasets" "Semantic Segmentation" "Pose Estimation" }}
 
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16" x-data="{ activeFilter: {{ $default_tag | jsonify }} }">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16" x-data="{ activeFilter: {{ $default_tag | jsonify }} }" @pubfilter.window="activeFilter = $event.detail">
   <div class="text-center mb-12">
     {{ with index $content "title" }}
     <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">

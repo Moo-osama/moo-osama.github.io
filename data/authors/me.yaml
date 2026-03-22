@@ -2,17 +2,163 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: Alex Johnson
-  given: Alex
-  family: Johnson
+  display: Mohamed Abdelfattah
+  given: Mohamed
+  family: Abdelfattah
 postnominals: []
 status:
-  icon: "💻"  # Emoji shown on avatar badge: 💻 developer, 🎨 designer, 🚀 startup, 🔬 researcher, 🎓 student
-role: Full-Stack Developer
-email: alex@example.com
+  icon: "🚀"  # Emoji shown on hero badge
+role: |
+  <style>
+    .os-role-wrap { display: grid; gap: 0.45rem; line-height: 1.55; text-align: left; }
+    .os-role-title { font-size: 1.22em; color: #0f172a; font-weight: 700; }
+    .os-role-sub { font-size: 1em; color: #475569; }
+    .os-role-meta { font-size: 0.95em; color: #64748b; }
+    .os-role-meta a { color: #2563eb; font-weight: 600; text-decoration: none; }
+    .os-role-label { font-size: 0.86em; color: #64748b; margin-top: 0.12rem; margin-bottom: 0.05rem; }
+    .os-conf-wrap { margin-top: 0.05rem; }
+    .os-conf-chip {
+      display: inline-block;
+      background: #eaf2ff;
+      border: 1px solid #bfd7ff;
+      color: #1e40af;
+      padding: 0.2rem 0.64rem;
+      border-radius: 1rem;
+      font-size: 0.81em;
+      font-weight: 600;
+      margin-right: 0.34rem;
+      margin-bottom: 0.25rem;
+    }
+    .dark .os-role-title { color: #e2e8f0; }
+    .dark .os-role-sub { color: #cbd5e1; }
+    .dark .os-role-meta { color: #94a3b8; }
+    .dark .os-role-meta a { color: #93c5fd; }
+    .dark .os-role-label { color: #94a3b8; }
+    .dark .os-conf-chip {
+      background: #1e293b;
+      border-color: #334155;
+      color: #bfdbfe;
+    }
+  </style>
+  <div class="os-role-wrap">
+    <div class="os-role-title">
+      PhD-ing Computer Vision @ <img src="/media/icons/epfl_logo.svg.png" alt="EPFL" style="height: 0.85em; width: auto; vertical-align: -0.08em; display: inline-block; margin-right: 0.16em;"> Switzerland 🇨🇭
+    </div>
+    <div class="os-role-sub">
+      Ex-Intern @ <img src="/media/icons/meta_logo.svg.png" alt="Meta" style="height: 0.85em; width: auto; vertical-align: -0.08em; display: inline-block; margin-right: 0.14em;"> Reality Labs
+    </div>
+    <div class="os-role-meta">
+      <a href="https://www.epfl.ch/labs/vita/" target="_blank">VITA Lab</a> · Luckily advised by <a href="https://people.epfl.ch/alexandre.alahi" target="_blank">Alexandre Alahi</a>
+    </div>
+    <div class="os-role-label">First-author at:</div>
+    <div class="os-conf-wrap">
+      <span class="os-conf-chip">CVPR 26</span>
+      <span class="os-conf-chip">NeurIPS 25</span>
+      <span class="os-conf-chip">ECCV 24</span>
+      <span class="os-conf-chip">CVPR 24</span>
+    </div>
+  </div>
+email: mohamed.abdelfattah@epfl.ch
 bio: |
-  Full-stack developer with 5+ years of experience building scalable web applications.
-  Passionate about modern JavaScript, cloud architecture, and creating delightful user experiences.
+  <style>
+    .os-research-card {
+      display: block;
+      margin-top: 0.3rem;
+      border: 1px solid #dbe7f4;
+      border-radius: 1rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      overflow: hidden;
+    }
+    .os-research-head {
+      display: block;
+      font-size: 0.84rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 0.44rem;
+    }
+    .os-research-main {
+      display: block;
+      color: #1f2937;
+      font-size: 1.08rem;
+      line-height: 1.76;
+      margin-bottom: 0.46rem;
+    }
+    .os-research-sub {
+      display: block;
+      color: #475569;
+      font-size: 1.02rem;
+      line-height: 1.74;
+      margin-bottom: 0.66rem;
+    }
+    .os-recruiter-card {
+      display: block;
+      margin-top: 0.55rem;
+      border: 1px solid #93c5fd;
+      border-left: 5px solid #2563eb;
+      border-radius: 0.85rem;
+      background: #eef6ff;
+      padding: 0.72rem 0.9rem;
+      color: #1e3a8a;
+      font-size: 0.99rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .dark .os-research-card {
+      border-color: #334155;
+      background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+    }
+    .dark .os-research-head { color: #93c5fd; }
+    .dark .os-research-main { color: #e2e8f0; }
+    .dark .os-research-sub { color: #cbd5e1; }
+    .os-topic-chip {
+      display: inline-block;
+      border-radius: 9999px;
+      padding: 0.2rem 0.58rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-right: 0.28rem;
+      margin-bottom: 0.25rem;
+    }
+    .os-chip-multimodal { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .os-chip-egocentric { background: #ecfeff; color: #0e7490; border: 1px solid #bae6fd; }
+    .os-chip-action { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    .os-chip-world { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+    .os-chip-selfsup { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+    .os-chip-llms { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+    .dark .os-chip-multimodal { background: rgba(37, 99, 235, 0.22); color: #bfdbfe; border-color: rgba(147, 197, 253, 0.4); }
+    .dark .os-chip-egocentric { background: rgba(8, 145, 178, 0.22); color: #bae6fd; border-color: rgba(125, 211, 252, 0.4); }
+    .dark .os-chip-action { background: rgba(5, 150, 105, 0.22); color: #a7f3d0; border-color: rgba(110, 231, 183, 0.4); }
+    .dark .os-chip-world { background: rgba(124, 58, 237, 0.22); color: #ddd6fe; border-color: rgba(196, 181, 253, 0.4); }
+    .dark .os-chip-selfsup { background: rgba(217, 119, 6, 0.22); color: #fde68a; border-color: rgba(252, 211, 77, 0.4); }
+    .dark .os-chip-llms { background: rgba(225, 29, 72, 0.22); color: #fecdd3; border-color: rgba(253, 164, 175, 0.4); }
+    .dark .os-recruiter-card {
+      border-color: #1d4ed8;
+      border-left-color: #60a5fa;
+      background: #172554;
+      color: #dbeafe;
+    }
+  </style>
+
+  <span class="os-research-card">
+    <span style="display:block; height:4px; background:linear-gradient(90deg,#3b82f6 0%,#14b8a6 55%,#f59e0b 100%);"></span>
+    <span style="display:block; padding:0.92rem 1rem 0.95rem 1rem; text-align:left;">
+      <span class="os-research-head">Research Snapshot</span>
+      <span class="os-research-main">My research asks a simple question: <strong>can machines learn strong representations by predicting the world rather than labeling it?</strong></span>
+      <span class="os-research-sub">I study multimodal transformers and large language models that integrate perception, motion, and language. By training models to infer missing structure across time and modalities, I develop predictive pretraining methods that yield transferable representations for action recognition, egocentric vision, and world modelling.</span>
+      <span style="display:block; margin-bottom:0.2rem;">
+        <span class="os-topic-chip os-chip-multimodal">Multimodal Learning</span>
+        <span class="os-topic-chip os-chip-egocentric">Egocentric Vision</span>
+        <span class="os-topic-chip os-chip-action">Action Recognition</span>
+        <span class="os-topic-chip os-chip-world">World Modelling</span>
+        <span class="os-topic-chip os-chip-selfsup">Self-supervised Learning</span>
+        <span class="os-topic-chip os-chip-llms">LLMs</span>
+      </span>
+    </span>
+  </span>
+
+  <span class="os-recruiter-card"><strong>For recruiters:</strong> I am actively looking for full-time research positions in computer vision. Feel free to reach out.</span>
 
 affiliations:
   - name: Tech Corp
@@ -20,14 +166,17 @@ affiliations:
 
 links:
   - icon: at-symbol
-    url: mailto:alex@example.com
-    label: E-mail Me
+    url: mailto:mohamed.abdelfattah@epfl.ch
+    label: Email
   - icon: brands/github
-    url: https://github.com/alexjohnson
+    url: https://github.com/Moo-osama
+    label: GitHub
   - icon: brands/linkedin
-    url: https://www.linkedin.com/in/alexjohnson/
-  - icon: brands/x
-    url: https://x.com/alexjohnson
+    url: https://www.linkedin.com/in/muhammad-osama-77b7561b0/
+    label: LinkedIn
+  - icon: brands/google-scholar
+    url: https://scholar.google.com/citations?user=gqvkC84AAAAJ&hl=en
+    label: Google Scholar
 
 interests:
   - Web Development
@@ -36,41 +185,87 @@ interests:
   - Developer Experience
 
 education:
-  - degree: B.S. Computer Science
-    institution: State University
-    start: 2015-09-01
-    end: 2019-05-31
+  - degree: Ph.D. in Computer Vision
+    institution: École Polytechnique Fédérale de Lausanne (EPFL)
+    institution_url: https://www.epfl.ch/
+    institution_logo: /media/icons/epfl_logo.svg.png
+    location: Lausanne, Switzerland
+    date: Dec 2026 (Expected)
     summary: |
-      Focus on software engineering and distributed systems.
-      Senior project on distributed caching systems.
-    button:
-      text: View Project
-      url: https://github.com/alexjohnson/senior-project
-      icon: brands/github
+      - Supervised by [Alexandre Alahi](https://people.epfl.ch/alexandre.alahi) at [VITA Lab](https://www.epfl.ch/labs/vita/).
+      - Building SOTA frameworks in Multimodal Large Language Models (MLLMs), self-supervised learning, and action understanding.
+      - First author of top-tier conference publications at CVPR, NeurIPS, and ECCV; co-author at EMNLP.
+  - degree: B.S. in Computer Engineering
+    institution: The American University in Cairo (AUC)
+    institution_url: https://www.aucegypt.edu/
+    institution_logo: /media/icons/auc.png
+    location: Cairo, Egypt
+    date: Jun 2022
+    summary: |
+      - Graduated with Highest Honors (Rank: 5/80, GPA: 3.91/4.0) and recognized on the Dean's List of Honors.
+      - Double Minor in Mathematics and Business Administration.
+      - Thesis: Fine-Grained Text-to-Image Generation using Generative Adversarial Networks (GANs).
+      - IELTS 8.5/9.0, GRE: Math 170/170, Verbal 161/170, Writing 5.5/6.
 
 experience:
-  - role: Senior Software Engineer
-    org: Tech Corp
-    start: 2023-01-01
+  - role: AI Research Scientist Intern
+    org: Meta Reality Labs
+    org_url: https://tech.facebook.com/reality-labs/
+    org_logo: /media/icons/experience_logos/meta.png
+    location: Zurich, Switzerland
+    start: 2025-05-01
+    end: 2025-11-30
     summary: |
-      Lead development of microservices architecture serving 1M+ users.
-      Improved API response time by 40% through optimization.
-      Mentored team of 5 junior developers.
-  - role: Full-Stack Developer
-    org: Startup Inc
+      - Manager: [Edoardo Remelli](https://ch.linkedin.com/in/edoardo-remelli-821682102). Advised by:  [Eric Sauser](https://www.linkedin.com/in/eric-sauser/) and [Shugao Ma](https://shugaoma.github.io/).
+      - Built multimodal LLMs for smart wearable systems.
+      - Spearheaded the collection of a novel dataset and benchmark for robust human-state perception.
+      - Published as first author at CVPR 2026.
+  - role: Computer Vision Research Scientist
+    org: SpreeAI
+    org_url: https://spreeai.com/
+    org_logo: /media/icons/experience_logos/spreeai.png
+    location: Nevada, USA
+    start: 2022-07-01
+    end: 2023-02-28
+    summary: |
+      - Built a conditional diffusion model for high-fidelity face reconstruction.
+      - Improved reconstruction performance by 20% over prior methods.
+      - Designed a U-Net head-swapping pipeline preserving pose, skin tone, and lighting.
+  - role: Deep Learning Intern
+    org: King Abdullah University of Science and Technology (KAUST)
+    org_url: https://www.kaust.edu.sa/en/
+    org_logo: /media/icons/experience_logos/kaust.png
+    location: Thuwal, Saudi Arabia
+    start: 2022-03-01
+    end: 2023-01-31
+    summary: |
+      - Worked with Prof. [Mohamed Elhoseiny](https://www.mohamed-elhoseiny.com/) in [KAUST Vision-CAIR](https://cemse.kaust.edu.sa/vision-cair).
+      - Led collection of a large vision-language dataset with affective captions/explanations in 4 languages.
+      - Co-developed training recipes leveraging cultural and linguistic diversity.
+      - Co-authored a paper published at EMNLP 2022.
+  - role: Remote Visiting Research Student
+    org: Boston University
+    org_url: https://www.bu.edu
+    org_logo: /media/icons/experience_logos/bu.png
+    location: Boston, USA
     start: 2021-06-01
-    end: 2022-12-31
+    end: 2021-12-31
     summary: |
-      Built and deployed 3 production applications from scratch.
-      Implemented CI/CD pipeline reducing deployment time by 60%.
-      Led migration from monolith to microservices architecture.
-  - role: Junior Developer
-    org: Web Agency
-    start: 2020-01-01
-    end: 2021-05-31
-    summary: |
-      Developed client websites using React and modern web technologies.
-      Participated in code reviews and agile ceremonies.
+      - Worked with Prof. [Sarah Adel Bargal](https://bargal.georgetown.domains/) in the IVC Group.
+      - Built data-augmentation pipelines preserving object traits and dataset diversity.
+      - Analyzed dataset balancing strategies for segmentation of deformable waste objects.
+      - Co-authored a paper published at CVPR 2022.
+
+teaching:
+  - date: 2023–present
+    role: Head Teaching Assistant (TA) of Deep Learning for Autonomous Vehicles
+    org: EPFL
+  - date: 2022
+    role: Deep Learning Teaching Assistant
+    org: AUC
+  - date: 2021 & 2022
+    role: Computer Architecture Teaching Assistant
+    org: AUC
 
 skills:
   - name: Development
@@ -97,4 +292,22 @@ languages:
     level: 5
     label: Native
 
-awards: []
+awards:
+  - date: 2022
+    summary: Awarded the AUC PA Cup for the class of 2022 for top academic and extracurricular achievements.
+    org: AUC
+  - date: 2022
+    summary: High Academic Achievement (Top 10% of Graduating Class) in SSE Honours Assembly.
+    org: AUC
+  - date: 2021
+    summary: Undergraduate Research Award, 4,000 USD.
+    org: AUC
+  - date: 2019
+    summary: Ranked among the top 10 ROV teams in the Middle East.
+    org: MATE ROV Regional Competition
+  - date: 2018
+    summary: Ranked 1st in the CSCE programming contest.
+    org: AUC
+  - date: 2018
+    summary: Named Highest Achiever and Reader of the Year.
+    org: AUC

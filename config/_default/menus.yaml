@@ -3,18 +3,21 @@
 #   The weight parameter defines the order that the links appear.
 
 main:
-  - name: Projects
-    url: /#projects
+  - name: Publications
+    url: /#all-publications
     weight: 10
-  - name: Skills
-    url: /#skills
-    weight: 20
   - name: Experience
     url: /#experience
+    weight: 20
+  - name: Education
+    url: /#education
     weight: 30
-  - name: Blog
-    url: /#blog
+  - name: Awards
+    url: /#awards
     weight: 40
+  - name: Teaching
+    url: /#teaching
+    weight: 50
   - name: Contact
     url: /#contact
-    weight: 50
+    weight: 60

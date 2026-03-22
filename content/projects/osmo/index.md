@@ -34,6 +34,7 @@ tech_stack:
   - Emotion Timeline Modeling
   - Multimodal Large Language Model
   - Temporal Reasoning
+coming_soon: true
 links:
   - type: live
     url: "#"

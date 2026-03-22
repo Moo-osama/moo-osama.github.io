@@ -195,6 +195,15 @@
         {{ $title_target = "target=\"_blank\" rel=\"noopener\"" }}
       {{ end }}
 
+      {{ $coming_soon := false }}
+      {{ with $item.Params.coming_soon }}
+        {{ $coming_soon = . }}
+      {{ end }}
+      {{ if $coming_soon }}
+        {{ $title_link = "#" }}
+        {{ $title_target = "onclick=\"return false\"" }}
+      {{ end }}
+
       {{ $summary := "" }}
       {{ with $item.Params.summary }}
         {{ $summary = . }}
@@ -269,6 +278,13 @@
               </div>
             {{ end }}
 
+            {{ if $coming_soon }}
+            <div class="absolute bottom-3 left-3">
+              <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-amber-500/90 text-white border border-amber-300/40 backdrop-blur-sm shadow-sm">
+                Paper Coming Soon
+              </span>
+            </div>
+            {{ end }}
           </div>
 
           <div class="p-5 flex-1">
@@ -356,10 +372,17 @@
                         {{ $icon = "document-text" }}
                       {{ end }}
 
+                      {{ if eq $link_url "#" }}
+                      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-200 dark:border-white/10 text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-white/[0.02] cursor-not-allowed select-none">
+                        {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                        <span>{{ $link_label }}</span>
+                      </span>
+                      {{ else }}
                       <a href="{{ $link_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
                         {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
                         <span>{{ $link_label }}</span>
                       </a>
+                      {{ end }}
                     {{ end }}
                   {{ end }}
                 {{ end }}

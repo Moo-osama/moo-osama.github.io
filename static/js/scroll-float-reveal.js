@@ -22,7 +22,7 @@
 
   nodes.forEach((el, index) => {
     el.classList.add("float-in-reveal");
-    el.style.transitionDelay = `${Math.min(index % 8, 6) * 60}ms`;
+    el.style.transitionDelay = `${Math.min(index % 8, 6) * 45}ms`;
   });
 
   if (!("IntersectionObserver" in window)) {

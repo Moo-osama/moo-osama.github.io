@@ -19,12 +19,12 @@ hugoblox:
     # Schema.org type for structured data
     type: person                        # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: "Full-Stack Developer"
+    tagline: "PhD Student in Computer Vision @ EPFL"
     # Site meta description for search engines and social sharing
-    description: "Modern developer portfolio showcasing web development projects, technical blog posts, and open source contributions. Built with Hugo Blox."
+    description: "Computer Vision PhD at EPFL VITA Lab. Research in multimodal learning, egocentric vision, and LLMs. First-author at CVPR, NeurIPS, ECCV."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
-      twitter: "yourusername"              # Twitter/X handle for Twitter Cards (without @)
+      twitter: "Moo_Osama_"
 
   # ────────────────────────────────────────────────────────────────────────────
   # THEME

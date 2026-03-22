@@ -161,8 +161,8 @@ bio: |
   <span class="os-recruiter-card"><strong>For recruiters:</strong> I am actively looking for full-time research positions in computer vision. Feel free to reach out.</span>
 
 affiliations:
-  - name: Tech Corp
-    url: https://techcorp.example.com
+  - name: VITA Lab, EPFL
+    url: https://www.epfl.ch/labs/vita/
 
 links:
   - icon: at-symbol
@@ -179,10 +179,12 @@ links:
     label: Google Scholar
 
 interests:
-  - Web Development
-  - Cloud Architecture
-  - Open Source
-  - Developer Experience
+  - Multimodal Learning
+  - Egocentric Vision
+  - Self-supervised Learning
+  - Action Recognition
+  - World Modelling
+  - Large Language Models
 
 education:
   - degree: Ph.D. in Computer Vision
@@ -268,27 +270,32 @@ teaching:
     org: AUC
 
 skills:
-  - name: Development
+  - name: Research
     items:
-      - label: TypeScript
-        level: 5
-      - label: React
-        level: 5
-      - label: Node.js
-        level: 5
       - label: Python
-        level: 4
-  - name: DevOps
-    items:
-      - label: Docker
-        level: 4
-      - label: AWS
-        level: 4
-      - label: CI/CD
         level: 5
+      - label: PyTorch
+        level: 5
+      - label: Computer Vision
+        level: 5
+      - label: Deep Learning
+        level: 5
+  - name: Tools
+    items:
+      - label: Transformers
+        level: 5
+      - label: SLURM / HPC
+        level: 4
+      - label: Git
+        level: 4
+      - label: Docker
+        level: 3
 
 languages:
   - name: English
+    level: 5
+    label: Fluent
+  - name: Arabic
     level: 5
     label: Native
 

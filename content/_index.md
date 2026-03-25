@@ -199,7 +199,7 @@ sections:
           description: |2-
             * Created a novel dataset and benchmark, and developed a multimodal large language model for robust perception of human states.
             * Published research paper as first-author in CVPR 2026.
-        - title: Computer Vision Research Scientist
+        - title: Computer Vision Applied Scientist
           company: SpreeAI
           company_url: ''
           company_logo: ''
@@ -312,7 +312,7 @@ sections:
         Let's connect and discuss how I can help your team.
       button:
         text: 'Download Resume'
-        url: "https://moo-osama.github.io/imgs_main/Os_CV.pdf"
+        url: "https://moo-osama.github.io/uploads/Os_CV.pdf"
         new_tab: true
     design:
       card:

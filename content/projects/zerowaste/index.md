@@ -46,7 +46,7 @@ links:
     label: Dataset
   - type: paper
     url: https://arxiv.org/abs/2106.02740
-    label: arXiv
+    label: Paper
 featured: false
 status: "Published"
 role: "Co-Author"

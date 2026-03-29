@@ -28,6 +28,9 @@ links:
   - type: live
     url: http://multimodal-oskar.github.io
     label: Project Page
+  - type: code
+    url: https://github.com/Moo-osama/oskar
+    label: Code
   - type: paper
     url: https://neurips.cc/virtual/2025/loc/san-diego/poster/118547
     label: Paper

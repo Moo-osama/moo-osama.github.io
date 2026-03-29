@@ -506,96 +506,98 @@
           {{ end }}
 
           {{/* Action Links - pushed to bottom with mt-auto */}}
-          {{ $links := slice }}
-          {{ $links_raw := $item.Params.links }}
-          {{ $links_iter := slice }}
-          {{ if reflect.IsSlice $links_raw }}
-            {{ $links_iter = $links_raw }}
-          {{ else if and $links_raw (reflect.IsMap $links_raw) }}
-            {{ $links_iter = slice $links_raw }}
-          {{ end }}
-          {{ if gt (len $links_iter) 0 }}
-            {{ range $links_iter }}
-              {{ $url := "" }}
-              {{ $label := "" }}
-              {{ $icon := "" }}
-              {{ $type := "" }}
-              {{ $new_tab := false }}
-              {{ if reflect.IsMap . }}
-                {{ with index . "url" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                {{ if not $url }}
-                  {{ with index . "link" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
+          {{ $built_links := partial "functions/build_links" (dict "page" $item "is_list" true) }}
+          {{ $fallbackByKey := dict
+            "btn_pdf" "PDF"
+            "btn_preprint" "Preprint"
+            "btn_doi" "DOI"
+            "btn_code" "Code"
+            "btn_dataset" "Dataset"
+            "btn_model" "Model"
+            "btn_slides" "Slides"
+            "btn_video" "Video"
+            "btn_poster" "Poster"
+            "btn_project" "Project"
+            "btn_site" "Site"
+            "btn_source" "Source"
+            "btn_canonical" "Canonical"
+            "btn_crosspost" "Crosspost"
+            "btn_discussion" "Discussion"
+            "btn_event" "Event"
+            "btn_calendar" "Calendar"
+            "btn_registration" "Registration"
+            "btn_demo" "Demo"
+            "btn_cite" "Cite"
+          }}
+          {{ $card_actions := slice }}
+          {{ range $built_links }}
+            {{ if in .contexts "list" }}
+              {{ $url := .url | default "" }}
+              {{ $scheme := (urls.Parse $url).Scheme }}
+              {{ $target := "" }}
+              {{ $rel := slice }}
+              {{ with .rel }}{{ $rel = . }}{{ end }}
+              {{ if not $scheme }}
+                {{ with ($item.Resources.GetMatch $url) }}
+                  {{ $url = .RelPermalink }}
                 {{ end }}
-                {{ with index . "label" }}{{ $label = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                {{ if not $label }}
-                  {{ with index . "name" }}{{ $label = strings.TrimSpace (printf "%v" .) }}{{ end }}
+                {{ if and (not ($item.Resources.GetMatch $url)) (not (hasPrefix $url "#")) }}
+                  {{ $url = $url | relURL }}
                 {{ end }}
-                {{ with index . "type" }}{{ $type = lower (strings.TrimSpace (printf "%v" .)) }}{{ end }}
-                {{ with index . "icon" }}{{ $icon = printf "%v" . }}{{ end }}
-                {{ $new_tab = partial "functions/coerce_bool" (dict "value" (index . "new_tab") "default" false) }}
-              {{ else if eq (printf "%T" .) "string" }}
-                {{ $url = strings.TrimSpace . }}
+              {{ else if in (slice "http" "https") $scheme }}
+                {{ $target = "target=\"_blank\"" }}
+                {{ $rel = $rel | append "noopener noreferrer" }}
               {{ end }}
-              {{ if $url }}
+
+              {{ $label := .label }}
+              {{ with .labelKey }}
                 {{ if not $label }}
-                  {{ if eq $type "github" }}
-                    {{ $label = i18n "portfolio_link_code" | default "Code" }}
-                  {{ else if eq $type "paper" }}
-                    {{ $label = i18n "portfolio_link_paper" | default "Paper" }}
-                  {{ else if eq $type "live" }}
-                    {{ $label = i18n "portfolio_link_live" | default "Live" }}
-                  {{ else if eq $type "demo" }}
-                    {{ $label = i18n "portfolio_link_demo" | default "Demo" }}
-                  {{ else }}
-                    {{ $label = i18n "portfolio_link_default" | default "Link" }}
-                  {{ end }}
+                  {{ $label = (i18n .) | default (index $fallbackByKey .) | default "Link" }}
                 {{ end }}
-                {{ if not $icon }}
-                  {{ if eq $type "github" }}
-                    {{ $icon = "brands/github" }}
-                  {{ else if eq $type "paper" }}
-                    {{ $icon = "document-text" }}
-                  {{ else if eq $type "live" }}
-                    {{ $icon = "globe-alt" }}
-                  {{ else if eq $type "demo" }}
-                    {{ $icon = "play" }}
-                  {{ else }}
-                    {{ $icon = "link" }}
-                  {{ end }}
-                {{ end }}
-                {{ $links = $links | append (dict "url" $url "label" $label "icon" $icon "new_tab" $new_tab) }}
               {{ end }}
+              {{ if not $label }}
+                {{ $label = "Link" }}
+              {{ end }}
+
+              {{ $card_actions = $card_actions | append (dict
+                "type" .type
+                "url" $url
+                "icon" (.icon | default "hero/link")
+                "label" $label
+                "target" $target
+                "rel" $rel
+              ) }}
             {{ end }}
           {{ end }}
-          {{ if gt (len $links) 0 }}
+          {{ if gt (len $card_actions) 0 }}
           <div class="flex items-center gap-3 pt-3 border-t border-gray-100 dark:border-white/5 mt-auto">
-            {{ range $links }}
-              {{ $icon := index . "icon" | default "link" }}
-              {{ $label := index . "label" | default (i18n "portfolio_link_default" | default "Link") }}
+            {{ range $card_actions }}
+              {{ $icon := index . "icon" | default "hero/link" }}
+              {{ $label := index . "label" | default "Link" }}
               {{ $link_url := index . "url" }}
-              {{ $new_tab := partial "functions/coerce_bool" (dict "value" (index . "new_tab") "default" false) }}
-              {{ $target := "" }}
-              {{ $scheme := (urls.Parse $link_url).Scheme }}
-              {{ if not $scheme }}
-                {{ if not (hasPrefix $link_url "#") }}
-                  {{ $link_url = $link_url | relLangURL }}
-                {{ end }}
-                {{ if eq (path.Ext $link_url) ".pdf" }}{{ $new_tab = true }}{{ end }}
-              {{ else if in (slice "http" "https") $scheme }}
-                {{ $new_tab = true }}
-              {{ end }}
-              {{ if $new_tab }}
-                {{ $target = "target=\"_blank\" rel=\"noopener noreferrer\"" }}
-              {{ end }}
-              <a 
-                href="{{ $link_url | safeURL }}" 
-                {{ $target | safeHTMLAttr }}
+              {{ $link_type := index . "type" | default "custom" }}
+              {{ if eq $link_type "bibtex" }}
+              <button
+                class="relative z-10 inline-flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors js-cite-clipboard cursor-pointer"
+                type="button"
+                data-filename="{{ $link_url }}"
+                onclick="event.stopPropagation();"
+              >
+                {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                <span>{{ $label }}</span>
+              </button>
+              {{ else }}
+              <a
+                href="{{ $link_url | safeURL }}"
+                {{ with index . "target" }}{{ . | safeHTMLAttr }}{{ end }}
+                {{ with index . "rel" }}rel="{{ delimit . " " }}"{{ end }}
                 class="relative z-10 inline-flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 onclick="event.stopPropagation();"
               >
                 {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
                 <span>{{ $label }}</span>
               </a>
+              {{ end }}
             {{ end }}
           </div>
           {{ end }}

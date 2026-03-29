@@ -199,7 +199,7 @@
       {{ with $item.Params.coming_soon }}
         {{ $coming_soon = . }}
       {{ end }}
-      {{ if $coming_soon }}
+      {{ if and $coming_soon (not $item.Params.external_link) }}
         {{ $title_link = "#" }}
         {{ $title_target = "onclick=\"return false\"" }}
       {{ end }}
@@ -278,10 +278,11 @@
               </div>
             {{ end }}
 
-            {{ if $coming_soon }}
+            {{ with $item.Params.internship }}
             <div class="absolute bottom-3 left-3">
-              <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-amber-500/90 text-white border border-amber-300/40 backdrop-blur-sm shadow-sm">
-                Paper Coming Soon
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-full text-white bg-[#0082FB] shadow-lg shadow-blue-500/40 border border-white/20 backdrop-blur-sm">
+                {{ partial "functions/get_icon" (dict "name" "hero/building-office-2" "attributes" "class=\"w-3.5 h-3.5\"") }}
+                {{ . }} Internship
               </span>
             </div>
             {{ end }}
@@ -305,11 +306,19 @@
             </p>
             {{ end }}
 
-            {{ with $venue }}
-            <div class="mb-4">
+            {{ if or $venue $coming_soon }}
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              {{ with $venue }}
               <span class="inline-flex items-center text-white px-3 py-1 rounded-full text-[0.85em] font-semibold shadow-sm bg-gradient-to-r from-primary-600 to-primary-500">
                 {{ . }}
               </span>
+              {{ end }}
+              {{ if $coming_soon }}
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[0.85em] font-semibold rounded-full text-amber-800 dark:text-amber-200 bg-amber-100 dark:bg-amber-500/20 border border-amber-300 dark:border-amber-400/40">
+                {{ partial "functions/get_icon" (dict "name" "hero/clock" "attributes" "class=\"w-3.5 h-3.5\"") }}
+                Paper Coming Soon
+              </span>
+              {{ end }}
             </div>
             {{ end }}
 
@@ -345,52 +354,134 @@
             <p class="text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">{{ . }}</p>
             {{ end }}
 
-            <div class="flex flex-wrap gap-2">
-              {{ if reflect.IsSlice $item.Params.links }}
-                {{ range $link := $item.Params.links }}
-                  {{ if reflect.IsMap $link }}
-                    {{ $link_url := "" }}
-                    {{ with index $link "url" }}{{ $link_url = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                    {{ if $link_url }}
-                      {{ $link_type := "" }}
-                      {{ with index $link "type" }}{{ $link_type = lower (strings.TrimSpace (printf "%v" .)) }}{{ end }}
-                      {{ $link_label := "Link" }}
-                      {{ with index $link "label" }}{{ $link_label = strings.TrimSpace (printf "%v" .) }}{{ end }}
+            {{ $built_links := partial "functions/build_links" (dict "page" $item "is_list" true) }}
+            {{ $fallbackByKey := dict
+              "btn_pdf" "PDF"
+              "btn_preprint" "Preprint"
+              "btn_doi" "DOI"
+              "btn_code" "Code"
+              "btn_dataset" "Dataset"
+              "btn_model" "Model"
+              "btn_slides" "Slides"
+              "btn_video" "Video"
+              "btn_poster" "Poster"
+              "btn_project" "Project"
+              "btn_site" "Site"
+              "btn_source" "Source"
+              "btn_canonical" "Canonical"
+              "btn_crosspost" "Crosspost"
+              "btn_discussion" "Discussion"
+              "btn_event" "Event"
+              "btn_calendar" "Calendar"
+              "btn_registration" "Registration"
+              "btn_demo" "Demo"
+              "btn_cite" "Cite"
+            }}
+            {{ $card_actions := slice }}
+            {{ range $built_links }}
+              {{ if and (in .contexts "list") (ne .type "site") }}
+                {{ $url := .url | default "" }}
+                {{ $scheme := (urls.Parse $url).Scheme }}
+                {{ $target_attr := "" }}
+                {{ $rel := slice }}
+                {{ with .rel }}{{ $rel = . }}{{ end }}
+                {{ if not $scheme }}
+                  {{ with ($item.Resources.GetMatch $url) }}
+                    {{ $url = .RelPermalink }}
+                  {{ end }}
+                  {{ if and (not ($item.Resources.GetMatch $url)) (not (hasPrefix $url "#")) }}
+                    {{ $url = $url | relURL }}
+                  {{ end }}
+                {{ else if in (slice "http" "https") $scheme }}
+                  {{ $target_attr = "target=\"_blank\"" }}
+                  {{ $rel = $rel | append "noopener noreferrer" }}
+                {{ end }}
 
-                      {{ $icon := "link" }}
-                      {{ if eq $link_type "paper" }}
-                        {{ $icon = "academic-cap" }}
-                      {{ else if eq $link_type "code" }}
-                        {{ $icon = "code-bracket" }}
-                      {{ else if eq $link_type "dataset" }}
-                        {{ $icon = "circle-stack" }}
-                      {{ else if or (eq $link_type "site") (eq $link_type "live") (eq $link_type "project") (eq $link_type "website") }}
-                        {{ $icon = "globe-alt" }}
-                      {{ else if eq $link_type "video" }}
-                        {{ $icon = "play-circle" }}
-                      {{ else if eq $link_type "pdf" }}
-                        {{ $icon = "document-text" }}
-                      {{ end }}
-
-                      {{ if eq $link_url "#" }}
-                      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-200 dark:border-white/10 text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-white/[0.02] cursor-not-allowed select-none">
-                        {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
-                        <span>{{ $link_label }}</span>
-                      </span>
-                      {{ else }}
-                      <a href="{{ $link_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
-                        {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
-                        <span>{{ $link_label }}</span>
-                      </a>
-                      {{ end }}
-                    {{ end }}
+                {{ $label := .label }}
+                {{ with .labelKey }}
+                  {{ if not $label }}
+                    {{ $label = (i18n .) | default (index $fallbackByKey .) | default "Link" }}
                   {{ end }}
                 {{ end }}
-              {{ else if $item.Params.external_link }}
-                <a href="{{ $item.Params.external_link }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
-                  {{ partial "functions/get_icon" (dict "name" "globe-alt" "attributes" "class=\"w-4 h-4\"") }}
-                  <span>Project</span>
+                {{ if not $label }}
+                  {{ $label = "Link" }}
+                {{ end }}
+
+                {{ $card_actions = $card_actions | append (dict
+                  "type" .type
+                  "url" $url
+                  "icon" (.icon | default "hero/link")
+                  "label" $label
+                  "target" $target_attr
+                  "rel" $rel
+                ) }}
+              {{ end }}
+            {{ end }}
+
+            {{/* Sort card_actions by priority: paper/pdf/preprint > live > code > dataset > demo > video/poster/slides > bibtex > custom */}}
+            {{ $priority_types := slice "paper" "pdf" "preprint" "live" "code" "dataset" "demo" "video" "poster" "slides" "bibtex" "custom" }}
+            {{ $sorted_actions := slice }}
+            {{ range $priority_types }}
+              {{ $pt := . }}
+              {{ range $card_actions }}
+                {{ if eq (index . "type") $pt }}
+                  {{ $sorted_actions = $sorted_actions | append . }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+            {{ range $card_actions }}
+              {{ if not (in $priority_types (index . "type")) }}
+                {{ $sorted_actions = $sorted_actions | append . }}
+              {{ end }}
+            {{ end }}
+
+            {{/* Inline cite.bib content for direct clipboard copy */}}
+            {{ $bib_content := "" }}
+            {{ with ($item.Resources.GetMatch "cite.bib") }}
+              {{ $bib_content = .Content }}
+            {{ end }}
+
+            <div class="flex flex-wrap gap-2">
+              {{ range $sorted_actions }}
+                {{ $link_url := index . "url" }}
+                {{ $link_type := index . "type" | default "custom" }}
+                {{ $icon := index . "icon" | default "hero/link" }}
+                {{ if eq $link_type "paper" }}{{ $icon = "hero/document-text" }}{{ end }}
+                {{ $label := index . "label" | default "Link" }}
+
+                {{ if eq $link_type "bibtex" }}
+                {{ if $coming_soon }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-200 dark:border-white/10 text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-white/[0.02] cursor-not-allowed select-none">
+                  {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                  <span>{{ $label }}</span>
+                </span>
+                {{ else }}
+                <button
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                  type="button"
+                  x-data="{ copied: false }"
+                  @click="navigator.clipboard.writeText({{ $bib_content | jsonify }}).then(() => { copied = true; setTimeout(() => copied = false, 2000) })"
+                >
+                  {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                  <span x-text="copied ? 'Copied!' : {{ $label | jsonify }}"></span>
+                </button>
+                {{ end }}
+                {{ else if eq $link_url "#" }}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-200 dark:border-white/10 text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-white/[0.02] cursor-not-allowed select-none">
+                  {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                  <span>{{ $label }}</span>
+                </span>
+                {{ else }}
+                <a
+                  href="{{ $link_url | safeURL }}"
+                  {{ with index . "target" }}{{ . | safeHTMLAttr }}{{ end }}
+                  {{ with index . "rel" }}rel="{{ delimit . " " }}"{{ end }}
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors"
+                >
+                  {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                  <span>{{ $label }}</span>
                 </a>
+                {{ end }}
               {{ end }}
             </div>
           </div>

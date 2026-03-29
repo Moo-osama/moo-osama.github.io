@@ -35,9 +35,11 @@ tech_stack:
   - Multimodal Large Language Model
   - Temporal Reasoning
 coming_soon: true
+external_link: "https://osmo-emos.github.io/"
+internship: "Meta"
 links:
   - type: live
-    url: "#"
+    url: "https://osmo-emos.github.io/"
     label: Project Page
   - type: paper
     url: "#"

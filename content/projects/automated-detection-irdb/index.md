@@ -40,7 +40,7 @@ tech_stack:
   - Clinical Computer Vision
 links:
   - type: paper
-    url: https://onlinelibrary.wiley.com/doi/10.1002/ana.27256
+    url: https://pubmed.ncbi.nlm.nih.gov/39786322/
     label: Paper
 featured: false
 status: "Published"

@@ -24,12 +24,12 @@
   {{ $teaching := index $owner "teaching" }}
   {{ if reflect.IsSlice $teaching }}{{ $items = $teaching }}{{ end }}
 {{ end }}
-{{ $items = sort $items "role" "asc" }}
+{{ $items = sort $items "date" "desc" }}
 
 <div class="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
   <div class="w-full">
     <h2 class="mb-3 text-3xl font-bold text-gray-900 dark:text-white text-center">{{ $title }}</h2>
-    <p class="mb-10 text-center text-gray-600 dark:text-gray-300">Instructional roles showcased by course focus, not timeline order.</p>
+    <p class="mb-10 text-center text-gray-600 dark:text-gray-300">Instructional roles in reverse chronological order.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       {{ range $idx, $item := $items }}

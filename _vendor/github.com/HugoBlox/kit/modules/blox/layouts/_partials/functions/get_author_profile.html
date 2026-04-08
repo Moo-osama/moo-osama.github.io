@@ -97,8 +97,13 @@ Output (dict):
   {{- end -}}
 {{- end -}}
 
-{{- /* Avatar resolution: look in assets/media/authors/<slug>.* */ -}}
+{{- /* Avatar resolution: prefer an explicit author avatar file, then fall back to assets/media/authors/<slug>.* */ -}}
 {{- $avatar := resources.GetMatch (printf "media/authors/%s.*" $slug) -}}
+{{- with $data.avatar -}}
+  {{- with resources.GetMatch (printf "media/authors/%s" .) -}}
+    {{- $avatar = . -}}
+  {{- end -}}
+{{- end -}}
 
 {{- $profile := dict
   "slug" $slug

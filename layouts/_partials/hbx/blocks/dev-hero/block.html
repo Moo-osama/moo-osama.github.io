@@ -35,6 +35,7 @@
 {{ if and (eq (len $author) 0) (isset site.Data.authors "me") }}
   {{ $author = index site.Data.authors "me" }}
 {{ end }}
+{{ $author_profile := partial "functions/get_author_profile" $username }}
 
 {{ $name := "Your Name" }}
 {{ with index $author "name" }}
@@ -64,7 +65,7 @@
 {{ $role := strings.TrimSpace (printf "%v" (index $author "role")) }}
 {{ $bio := strings.TrimSpace (printf "%v" (index $author "bio")) }}
 
-{{ $avatar := resources.GetMatch (printf "media/authors/%s*" $username) }}
+{{ $avatar := $author_profile.avatar }}
 {{ $avatar_url := printf "/media/authors/%s.png" $username }}
 {{ if $avatar }}{{ $avatar_url = $avatar.RelPermalink }}{{ end }}
 

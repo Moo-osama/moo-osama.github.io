@@ -42,7 +42,7 @@ sections:
           dark: "#0a0a0f"
       spacing:
         padding: ["0rem", "0", "4rem", "0"]
-  
+
   # Filterable Portfolio - Alpine.js powered project filtering
     # - block: portfolio
     #   id: projects
@@ -283,7 +283,54 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # Contact Section
+  # About Me Section
+  - block: about-me
+    id: about-me
+    content:
+      kicker: "When not researching"
+      title: "Things I Love"
+      intro: "Usually powered by caffeine, mountain air, old music, good food, and excellent ways to avoid being indoors."
+      vibes:
+        - icon: "🇨🇭"
+          label: "Switzerland"
+        - icon: "💪"
+          label: "Gym & Diet"
+        - icon: "🥘"
+          label: "Egyptian Food"
+        - icon: "🎤"
+          label: "Concerts"
+        - icon: "🕴️"
+          label: "Dressing Up"
+        - icon: "🎵"
+          label: "Old Music"
+        - icon: "🛶"
+          label: "Kayaking"
+        - icon: "🧗"
+          label: "Bouldering"
+        - icon: "🏔️"
+          label: "Hiking & Skiing"
+        - icon: "🎬"
+          label: "The Dark Knight"
+        - icon: "🎮"
+          label: "AC Nostalgia"
+        - icon: "🗳️"
+          label: "US Politics"
+        - icon: "🏊"
+          label: "Swimming"
+        - icon: "🏐"
+          label: "Volleyball"
+      quote_title: "Favorite mindset"
+      quote: "It's more interesting to live not knowing than to have answers that might be wrong."
+      quote_author: "Feynman"
+    design:
+      background:
+        color:
+          light: "#f5f5f5"
+          dark: "#0b1220"
+      spacing:
+        padding: ["4rem", "0", "4rem", "0"]
+      css_class: about-me-interlude
+
   - block: contact-info
     id: contact
     content:
@@ -297,8 +344,8 @@ sections:
       columns: '1'
       background:
         color:
-          light: "#f5f5f5"
-          dark: "#0b1220"
+          light: "#ffffff"
+          dark: "#111827"
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
@@ -321,8 +368,8 @@ sections:
         text_color: dark
       background:
         color:
-          light: "#ffffff"
-          dark: "#111827"
+          light: "#f5f5f5"
+          dark: "#0b1220"
       spacing:
         padding: ["4rem", "0", "6rem", "0"]
 ---

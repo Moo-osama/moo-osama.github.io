@@ -26,7 +26,7 @@ sections:
           url: "#all-publications"
           icon: arrow-down
         - text: Download CV
-          url: "/uploads/Os_CV.pdf"
+          url: "/uploads/resume.pdf"
           new_tab: true
           icon: arrow-down-tray
         - text: Get In Touch
@@ -312,7 +312,7 @@ sections:
         Let's connect and discuss how I can help your team.
       button:
         text: 'Download Resume'
-        url: "https://moo-osama.github.io/uploads/Os_CV.pdf"
+        url: "https://moo-osama.github.io/uploads/resume.pdf"
         new_tab: true
     design:
       card:

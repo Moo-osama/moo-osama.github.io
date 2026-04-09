@@ -28,7 +28,7 @@ tech_stack:
   - Vision and Language
 links:
   - type: live
-    url: https://www.artelingo.org
+    url: https://www.artelingo.org/artelingo-emnlp22
     label: Project Page
   - type: code
     url: https://github.com/Vision-CAIR/artelingo

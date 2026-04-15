@@ -65,6 +65,9 @@
 {{ $role := strings.TrimSpace (printf "%v" (index $author "role")) }}
 {{ $bio := strings.TrimSpace (printf "%v" (index $author "bio")) }}
 
+{{ $availability_months := 4 }}
+{{ $availability_date := (now.AddDate 0 $availability_months 0).Format "Jan, 2006" }}
+
 {{ $avatar := $author_profile.avatar }}
 {{ $avatar_url := printf "/media/authors/%s.png" $username }}
 {{ if $avatar }}{{ $avatar_url = $avatar.RelPermalink }}{{ end }}
@@ -142,7 +145,7 @@
       {{ end }}
 
       {{ if ne $bio "" }}
-        <div class="text-left mb-7 max-w-3xl mx-auto lg:mx-0">{{ $bio | safeHTML }}</div>
+        <div class="text-left mb-7 max-w-3xl mx-auto lg:mx-0">{{ $bio | safeHTML }}<span class="os-recruiter-card" style="display: block; margin-top: 0.55rem; border: 1px solid #93c5fd; border-left: 5px solid #2563eb; border-radius: 0.85rem; background: #eef6ff; padding: 0.72rem 0.9rem; color: #1e3a8a; font-size: 0.99rem; line-height: 1.6; font-weight: 500;"><strong>For recruiters:</strong> I am actively looking for full-time research positions in computer vision. Available starting <strong>{{ $availability_date }}</strong>.</span></div>
       {{ end }}
 
       {{ if gt (len $buttons) 0 }}

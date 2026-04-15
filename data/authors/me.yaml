@@ -226,8 +226,6 @@ bio: |
     </span>
   </span>
 
-  <span class="os-recruiter-card"><strong>For recruiters:</strong> I am actively looking for full-time research positions in computer vision. Feel free to reach out.</span>
-
 affiliations:
   - name: VITA Lab, EPFL
     url: https://www.epfl.ch/labs/vita/
@@ -278,6 +276,18 @@ education:
       - IELTS 8.5/9.0, GRE: Math 170/170, Verbal 161/170, Writing 5.5/6.
 
 experience:
+  - role: Ph.D. Researcher
+    org: École Polytechnique Fédérale de Lausanne
+    org_url: https://www.epfl.ch/
+    org_logo: /media/icons/epfl_logo.svg.png
+    location: Lausanne, Switzerland
+    start: 2022-09-01
+    end: 2026-08-31
+    end_expected: true
+    summary: |
+      - Advisor: [Alexandre Alahi](https://people.epfl.ch/alexandre.alahi) at [VITA Lab](https://www.epfl.ch/labs/vita/).
+      - Develop OSKAR [NeurIPS 2025], a unified multimodal world model for video, skeleton, and text. Train 10B+ parameter systems on 512 H200 GPUs on [Switzerland's Swiss AI Initiative](https://www.swiss-ai.org/), reaching 86.1% on Kinetics-400, 91.1% on NTU120-XSub, 37.9 mAP on AVA, and 50.4 R@1 on MSRVTT.
+      - Develop MaskCLR [CVPR 2024] and S-JEPA [ECCV 2024] for strong action representations, improving cross-source generalization by 26.6 points and noise robustness by up to 14.9 points.
   - role: AI Research Scientist Intern
     org: Meta Reality Labs
     org_url: https://tech.facebook.com/reality-labs/

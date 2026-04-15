@@ -61,8 +61,12 @@
             {{ end }}
 
             {{ $end_display := "Present" }}
+            {{ $end_expected := false }}
             {{ with index . "end" }}
               {{ $end_display = time.Format $date_format (time.AsTime (printf "%v" .)) }}
+            {{ end }}
+            {{ with index . "end_expected" }}
+              {{ if . }}{{ $end_expected = true }}{{ end }}
             {{ end }}
 
             <div class="group relative pl-12 sm:pl-16">
@@ -98,7 +102,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <time>{{ $start_display }} - {{ $end_display }}</time>
+                      <time>{{ $start_display }} - {{ $end_display }}{{ if $end_expected }} (Expected){{ end }}</time>
                     </div>
                     {{ if ne $location "" }}
                       <div class="flex items-center gap-2">

@@ -118,7 +118,7 @@ jobs:
         HUGO_BLOX_LICENSE: ${{ secrets.HUGO_BLOX_LICENSE }}
       run: |
         echo "Hugo Cache Dir: $(hugo config | grep cachedir)"
-        hugo --minify
+        hugo --minify --baseURL "https://moo-osama.github.io/"
 
     - name: Generate Pagefind search index (if applicable)
       run: |

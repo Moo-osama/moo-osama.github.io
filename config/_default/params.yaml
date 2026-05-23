@@ -21,7 +21,7 @@ hugoblox:
     # Short tagline displayed on your site
     tagline: "PhD Student in Computer Vision @ EPFL"
     # Site meta description for search engines and social sharing
-    description: "Computer Vision PhD at EPFL VITA Lab. Research in multimodal learning, egocentric vision, and LLMs. First-author at CVPR, NeurIPS, ECCV."
+    description: "Mohamed Abdelfattah is an AI Research Scientist and Computer Vision PhD researcher at EPFL VITA Lab, working on multimodal learning, egocentric vision, and LLMs."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
       twitter: "Moo_Osama_"
@@ -129,7 +129,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   seo:
     # Browser tab title override (defaults to identity.name if not set)
-    title: ""
+    title: "Mohamed Abdelfattah | AI Research Scientist"
     # For local_business identity type only
     location:
       address:

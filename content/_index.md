@@ -1,7 +1,7 @@
 ---
 # Leave the homepage title empty to use the site title
 title: ''
-summary: ''
+summary: 'Mohamed Abdelfattah is an AI Research Scientist and Computer Vision PhD researcher at EPFL VITA Lab, working on multimodal learning, egocentric vision, and LLMs.'
 date: 2026-01-05
 type: landing
 
@@ -26,7 +26,7 @@ sections:
           url: "#all-publications"
           icon: arrow-down
         - text: Download CV
-          url: "/uploads/resume.pdf"
+          url: "/uploads/Mohamed_Abdelfattah_AI_Research_Scientist.pdf"
           new_tab: true
           icon: arrow-down-tray
         - text: Get In Touch
@@ -359,7 +359,7 @@ sections:
         Let's connect and discuss how I can help your team.
       button:
         text: 'Download Resume'
-        url: "https://moo-osama.github.io/uploads/resume.pdf"
+        url: "/uploads/Mohamed_Abdelfattah_AI_Research_Scientist.pdf"
         new_tab: true
     design:
       card:

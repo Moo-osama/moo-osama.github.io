@@ -12,7 +12,7 @@ authors:
   - "Shugao Ma"
   - "Alexandre Alahi"
   - "Edoardo Remelli"
-venue: "CVPR 2026 Conference Submission"
+venue: "CVPR 2026"
 card_authors:
   - "Mohamed Abdelfattah"
   - '<a href="https://btekin.github.io" target="_blank" rel="noopener" class="text-primary-600 dark:text-primary-400"><authorname>Bugra Tekin</authorname></a>'
@@ -34,7 +34,7 @@ tech_stack:
   - Emotion Timeline Modeling
   - Multimodal Large Language Model
   - Temporal Reasoning
-coming_soon: true
+coming_soon: false
 external_link: "https://osmo-emos.github.io/"
 internship: "Meta"
 links:
@@ -42,18 +42,18 @@ links:
     url: "https://osmo-emos.github.io/"
     label: Project Page
   - type: paper
-    url: "#"
+    url: "https://openaccess.thecvf.com/content/CVPR2026/papers/Abdelfattah_OSMO_Open-vocabulary_Self-eMOtion_Tracking_CVPR_2026_paper.pdf"
     label: Paper
   - type: code
     url: "#"
     label: Code
 featured: true
-status: "Submitted"
+status: "Published"
 role: "First Author"
 duration: "Research Project"
 team_size: 8
 highlights:
-  - "CVPR 2026 conference submission"
+  - "Published at CVPR 2026"
   - "Introduces egocentric self-emotion tracking as a new task"
   - "Largest egocentric emotion dataset with subject-wise timelines"
 ---

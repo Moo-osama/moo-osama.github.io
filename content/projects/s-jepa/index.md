@@ -27,6 +27,9 @@ links:
   - type: paper
     url: https://sjepa.github.io
     label: Paper
+  - type: poster
+    url: /projects/s-jepa/poster.pdf
+    label: Poster
 featured: true
 status: "Published"
 role: "Co-Author"

@@ -26,6 +26,9 @@ links:
   - type: paper
     url: https://openaccess.thecvf.com/content/CVPR2024/papers/Abdelfattah_MaskCLR_Attention-Guided_Contrastive_Learning_for_Robust_Action_Representation_Learning_CVPR_2024_paper.pdf
     label: Paper
+  - type: poster
+    url: /projects/maskclr/poster.pdf
+    label: Poster
 featured: true
 status: "Published"
 role: "Co-Author"

@@ -1,7 +1,7 @@
 ---
 title: "OSKAR: Omnimodal Self-supervised Knowledge Abstraction and Representation"
 date: 2025-12-01
-summary: "OSKAR is a self-supervised multimodal foundation model that learns in the latent space by predicting masked multimodal features."
+summary: "OSKAR is a self-supervised **multimodal foundation model** that learns in the latent space by predicting masked multimodal features."
 external_link: "http://multimodal-oskar.github.io"
 authors:
   - "Mohamed Abdelfattah*"
@@ -34,6 +34,9 @@ links:
   - type: paper
     url: https://neurips.cc/virtual/2025/loc/san-diego/poster/118547
     label: Paper
+  - type: poster
+    url: /projects/oskar/poster.pdf
+    label: Poster
 featured: true
 status: "Published"
 role: "Co-Author"
@@ -65,7 +68,7 @@ OSKAR (Omnimodal Self-supervised Knowledge Abstraction and Representation) is a 
 
 ## One-Sentence Summary
 
-OSKAR is a self-supervised multimodal foundation model that learns in the latent space by predicting masked multimodal features.
+OSKAR is a self-supervised **multimodal foundation model** that learns in the latent space by predicting masked multimodal features.
 
 ## Links
 

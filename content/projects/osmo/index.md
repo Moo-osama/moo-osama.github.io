@@ -2,7 +2,7 @@
 title: "OSMO: Open-vocabulary Self-eMOtion Tracking"
 date: 2025-12-08
 lastmod: 2025-12-11
-summary: "OSMO introduces egocentric self-emotion tracking with a large-scale dataset, a multi-task benchmark, and OSIRIS, a multimodal model for coherent emotion timelines."
+summary: "OSIRIS is an **egocentric multimodal LLM** for continuous, open-vocabulary human-state tracking from smart glasses."
 authors:
   - "Mohamed Abdelfattah"
   - "Bugra Tekin"
@@ -44,9 +44,9 @@ links:
   - type: paper
     url: "https://openaccess.thecvf.com/content/CVPR2026/papers/Abdelfattah_OSMO_Open-vocabulary_Self-eMOtion_Tracking_CVPR_2026_paper.pdf"
     label: Paper
-  - type: code
-    url: "#"
-    label: Code
+  - type: poster
+    url: /projects/osmo/poster.pdf
+    label: Poster
 featured: true
 status: "Published"
 role: "First Author"
@@ -58,7 +58,7 @@ highlights:
   - "Largest egocentric emotion dataset with subject-wise timelines"
 ---
 
-A CVPR 2026 submission introducing a new task, benchmark, and model for open-vocabulary self-emotion tracking from egocentric multimodal streams.
+OSIRIS is an **egocentric multimodal LLM** for continuous, open-vocabulary human-state tracking from smart glasses.
 
 ## Abstract
 

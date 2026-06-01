@@ -189,10 +189,9 @@
       {{ end }}
 
       {{ $title_link := $item.RelPermalink }}
-      {{ $title_target := "" }}
+      {{ $title_target := "target=\"_blank\" rel=\"noopener\"" }}
       {{ with $item.Params.external_link }}
         {{ $title_link = strings.TrimSpace (printf "%v" .) }}
-        {{ $title_target = "target=\"_blank\" rel=\"noopener\"" }}
       {{ end }}
 
       {{ $coming_soon := false }}
@@ -351,7 +350,7 @@
             {{ end }}
 
             {{ with $summary }}
-            <p class="text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">{{ . }}</p>
+            <p class="text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">{{ . | markdownify }}</p>
             {{ end }}
 
             {{ $built_links := partial "functions/build_links" (dict "page" $item "is_list" true) }}
@@ -393,6 +392,9 @@
                     {{ $url = $url | relURL }}
                   {{ end }}
                 {{ else if in (slice "http" "https") $scheme }}
+                  {{ $rel = $rel | append "noopener noreferrer" }}
+                {{ end }}
+                {{ if and $url (not (hasPrefix $url "#")) }}
                   {{ $target_attr = "target=\"_blank\"" }}
                   {{ $rel = $rel | append "noopener noreferrer" }}
                 {{ end }}
@@ -475,7 +477,7 @@
                 <a
                   href="{{ $link_url | safeURL }}"
                   {{ with index . "target" }}{{ . | safeHTMLAttr }}{{ end }}
-                  {{ with index . "rel" }}rel="{{ delimit . " " }}"{{ end }}
+                  {{ with index . "rel" }}rel="{{ delimit (uniq .) " " }}"{{ end }}
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors"
                 >
                   {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}

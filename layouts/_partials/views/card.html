@@ -1,10 +1,9 @@
 {{ $item := .item }}
 
 {{ $link := $item.RelPermalink }}
-{{ $target := "" }}
+{{ $target := "target=\"_blank\" rel=\"noopener\"" }}
 {{ if $item.Params.external_link }}
   {{ $link = $item.Params.external_link }}
-  {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
 {{ end }}
 
 {{ $resource := partial "functions/get_featured_image.html" $item }}
@@ -121,7 +120,7 @@
       {{ if and $item.Params.tags (gt (len $item.Params.tags) 0) }}
       <div class="flex items-center gap-2">
         {{ with index ($item.GetTerms "tags") 0 }}
-        <a href="{{ .RelPermalink }}">
+        <a href="{{ .RelPermalink }}" target="_blank" rel="noopener">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary-100 text-primary-800 dark:bg-primary-900/40 dark:text-primary-300">
             {{ .Page.LinkTitle }}
           </span>
@@ -140,7 +139,7 @@
       </h3>
 
       <p class="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed line-clamp-3">
-        {{ (partial "functions/get_summary" $item) | plainify | htmlUnescape | truncate 180 }}
+        {{ (partial "functions/get_summary" $item) | truncate 180 | markdownify }}
       </p>
 
       {{ $built_links := partial "functions/build_links" (dict "page" $item "is_list" true) }}
@@ -182,6 +181,9 @@
               {{ $url = $url | relURL }}
             {{ end }}
           {{ else if in (slice "http" "https") $scheme }}
+            {{ $rel = $rel | append "noopener noreferrer" }}
+          {{ end }}
+          {{ if and $url (not (hasPrefix $url "#")) }}
             {{ $target_attr = "target=\"_blank\"" }}
             {{ $rel = $rel | append "noopener noreferrer" }}
           {{ end }}
@@ -226,7 +228,7 @@
           <a
             href="{{ $link_url | safeURL }}"
             {{ with index . "target" }}{{ . | safeHTMLAttr }}{{ end }}
-            {{ with index . "rel" }}rel="{{ delimit . " " }}"{{ end }}
+            {{ with index . "rel" }}rel="{{ delimit (uniq .) " " }}"{{ end }}
             class="inline-flex items-center gap-1.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
           >
             {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}

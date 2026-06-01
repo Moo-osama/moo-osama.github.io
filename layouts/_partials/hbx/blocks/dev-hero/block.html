@@ -65,7 +65,7 @@
 {{ $role := strings.TrimSpace (printf "%v" (index $author "role")) }}
 {{ $bio := strings.TrimSpace (printf "%v" (index $author "bio")) }}
 
-{{ $availability_months := 4 }}
+{{ $availability_months := 3 }}
 {{ $availability_date := (now.AddDate 0 $availability_months 0).Format "Jan, 2006" }}
 
 {{ $avatar := $author_profile.avatar }}

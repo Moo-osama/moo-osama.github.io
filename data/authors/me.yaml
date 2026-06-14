@@ -258,7 +258,9 @@ education:
     institution_url: https://www.epfl.ch/
     institution_logo: /media/icons/epfl_logo.svg.png
     location: Lausanne, Switzerland
-    date: Dec 2026 (Expected)
+    start: 2022-09-01
+    end_offset_months: 2
+    end_expected: true
     summary: |
       - Supervised by [Alexandre Alahi](https://people.epfl.ch/alexandre.alahi) at [VITA Lab](https://www.epfl.ch/labs/vita/).
       - Building SOTA frameworks in Multimodal Large Language Models (MLLMs), self-supervised learning, and action understanding.
@@ -282,7 +284,7 @@ experience:
     org_logo: /media/icons/epfl_logo.svg.png
     location: Lausanne, Switzerland
     start: 2022-09-01
-    end: 2026-08-31
+    end_offset_months: 2
     end_expected: true
     summary: |
       - Advisor: [Alexandre Alahi](https://people.epfl.ch/alexandre.alahi) at [VITA Lab](https://www.epfl.ch/labs/vita/).

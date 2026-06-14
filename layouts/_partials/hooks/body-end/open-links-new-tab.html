@@ -11,6 +11,17 @@
         return;
       }
 
+      var url;
+      try {
+        url = new URL(href, window.location.href);
+      } catch (error) {
+        return;
+      }
+
+      if (url.origin === window.location.origin) {
+        return;
+      }
+
       link.setAttribute('target', '_blank');
       var rel = (link.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
       if (!rel.includes('noopener')) rel.push('noopener');

@@ -65,6 +65,9 @@
             {{ with index . "end" }}
               {{ $end_display = time.Format $date_format (time.AsTime (printf "%v" .)) }}
             {{ end }}
+            {{ with index . "end_offset_months" }}
+              {{ $end_display = time.Format $date_format (now.AddDate 0 (int .) 0) }}
+            {{ end }}
             {{ with index . "end_expected" }}
               {{ if . }}{{ $end_expected = true }}{{ end }}
             {{ end }}

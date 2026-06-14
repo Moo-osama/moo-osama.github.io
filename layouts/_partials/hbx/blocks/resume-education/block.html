@@ -48,9 +48,20 @@
             {{ $institution_logo := strings.TrimSpace (printf "%v" (index . "institution_logo")) }}
             {{ $location := strings.TrimSpace (printf "%v" (index . "location")) }}
             {{ $summary := strings.TrimSpace (printf "%v" (index . "summary")) }}
+            {{ $end_offset_months := 0 }}
+            {{ with index . "end_offset_months" }}
+              {{ $end_offset_months = int . }}
+            {{ end }}
+            {{ $end_expected := false }}
+            {{ with index . "end_expected" }}
+              {{ if . }}{{ $end_expected = true }}{{ end }}
+            {{ end }}
 
             {{ $date_display := strings.TrimSpace (printf "%v" (index . "date")) }}
-            {{ if eq $date_display "" }}
+            {{ if gt $end_offset_months 0 }}
+              {{ $date_display = time.Format $date_format (now.AddDate 0 $end_offset_months 0) }}
+              {{ if $end_expected }}{{ $date_display = printf "%s (Expected)" $date_display }}{{ end }}
+            {{ else if eq $date_display "" }}
               {{ $start_display := "" }}
               {{ with index . "start" }}
                 {{ $start_display = time.Format $date_format (time.AsTime (printf "%v" .)) }}
@@ -60,6 +71,7 @@
               {{ with index . "end" }}
                 {{ $end_display = time.Format $date_format (time.AsTime (printf "%v" .)) }}
               {{ end }}
+              {{ if $end_expected }}{{ $end_display = printf "%s (Expected)" $end_display }}{{ end }}
 
               {{ if and (ne $start_display "") (ne $end_display "") }}
                 {{ $date_display = printf "%s - %s" $start_display $end_display }}

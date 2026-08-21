@@ -349,27 +349,4 @@ sections:
       spacing:
         padding: ["4rem", "0", "4rem", "0"]
   
-  # CTA Card
-  - block: cta-card
-    content:
-      title: "🚀 Open to Opportunities"
-      text: |-
-        I'm currently looking for **research** roles in industry or academia.
-        
-        Let's connect and discuss how I can help your team.
-      button:
-        text: 'Download Resume'
-        url: "/uploads/Mohamed_Abdelfattah_AI_Research_Scientist.pdf"
-        new_tab: true
-    design:
-      card:
-        # Light mode: soft pastel theme gradient | Dark mode: rich deep gradient
-        css_class: 'bg-gradient-to-br from-primary-200 via-primary-100 to-secondary-200 dark:from-primary-600 dark:via-primary-700 dark:to-secondary-700'
-        text_color: dark
-      background:
-        color:
-          light: "#f5f5f5"
-          dark: "#0b1220"
-      spacing:
-        padding: ["4rem", "0", "6rem", "0"]
 ---

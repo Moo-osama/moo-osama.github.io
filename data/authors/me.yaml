@@ -103,13 +103,16 @@ role: |
   </style>
   <div class="os-role-wrap">
     <div class="os-role-title">
-      PhD-ing Computer Vision @ <img src="/media/icons/epfl_logo.svg.png" alt="EPFL" style="height: 0.85em; width: auto; vertical-align: -0.08em; display: inline-block; margin-right: 0.16em;"> Switzerland 🇨🇭
+      AI/ML Research Scientist @ <img src="/media/icons/experience_logos/Apple_logo_black.svg" alt="Apple" style="height: 1.15em; width: auto; vertical-align: -0.16em; display: inline-block; margin: 0 0.12em;"> Zurich 🇨🇭
     </div>
     <div class="os-role-sub">
-      Ex-Intern @ <img src="/media/icons/meta_logo.svg.png" alt="Meta" style="height: 0.85em; width: auto; vertical-align: -0.08em; display: inline-block; margin-right: 0.14em;"> Reality Labs
+      PhD in Computer Vision @ <img src="/media/icons/epfl_logo.svg.png" alt="EPFL" style="height: 0.85em; width: auto; vertical-align: -0.08em; display: inline-block; margin: 0 0.12em;">
     </div>
     <div class="os-role-meta">
-      <a href="https://www.epfl.ch/labs/vita/" target="_blank">VITA Lab</a> · Luckily advised by <a href="https://people.epfl.ch/alexandre.alahi" target="_blank">Alexandre Alahi</a>
+      Was luckily advised by <a href="https://people.epfl.ch/alexandre.alahi" target="_blank">Alexandre Alahi</a>
+    </div>
+    <div class="os-role-meta">
+      Ex-Intern @ <img src="/media/icons/meta_logo.svg.png" alt="Meta" style="height: 0.85em; width: auto; vertical-align: -0.08em; display: inline-block; margin: 0 0.12em;"> Reality Labs
     </div>
     <div class="os-role-label">First-author at:</div>
     <div class="os-conf-wrap">
@@ -119,7 +122,7 @@ role: |
       <a href="#all-publications" class="os-conf-chip" style="--chip-delay: -2.25s">CVPR 24</a>
     </div>
   </div>
-email: mohamed.abdelfattah@epfl.ch
+email: muhammad_osama@aucegypt.edu
 bio: |
   <style>
     .os-research-card {
@@ -208,12 +211,12 @@ bio: |
   </span>
 
 affiliations:
-  - name: VITA Lab, EPFL
-    url: https://www.epfl.ch/labs/vita/
+  - name: Apple
+    url: https://www.apple.com/
 
 links:
   - icon: at-symbol
-    url: mailto:mohamed.abdelfattah@epfl.ch
+    url: mailto:muhammad_osama@aucegypt.edu
     label: Email
   - icon: brands/github
     url: https://github.com/Moo-osama
@@ -240,8 +243,7 @@ education:
     institution_logo: /media/icons/epfl_logo.svg.png
     location: Lausanne, Switzerland
     start: 2022-09-01
-    end_offset_months: 2
-    end_expected: true
+    end: 2026-10-31
     summary: |
       - Supervised by [Alexandre Alahi](https://people.epfl.ch/alexandre.alahi) at [VITA Lab](https://www.epfl.ch/labs/vita/).
       - Building SOTA frameworks in Multimodal Large Language Models (MLLMs), self-supervised learning, and action understanding.
@@ -259,14 +261,19 @@ education:
       - IELTS 8.5/9.0, GRE: Math 170/170, Verbal 161/170, Writing 5.5/6.
 
 experience:
+  - role: AI/ML Research Scientist
+    org: Apple
+    org_url: https://www.apple.com/
+    org_logo: /media/icons/experience_logos/Apple_logo_black.svg
+    location: Zurich, Switzerland
+    start: 2026-11-01
   - role: Ph.D. Researcher
     org: École Polytechnique Fédérale de Lausanne
     org_url: https://www.epfl.ch/
     org_logo: /media/icons/epfl_logo.svg.png
     location: Lausanne, Switzerland
     start: 2022-09-01
-    end_offset_months: 2
-    end_expected: true
+    end: 2026-10-31
     summary: |
       - Advisor: [Alexandre Alahi](https://people.epfl.ch/alexandre.alahi) at [VITA Lab](https://www.epfl.ch/labs/vita/).
       - Develop OSKAR [NeurIPS 2025], a unified multimodal world model for video, skeleton, and text. Train 10B+ parameter systems on 512 H200 GPUs on [Switzerland's Swiss AI Initiative](https://www.swiss-ai.org/), reaching 86.1% on Kinetics-400, 91.1% on NTU120-XSub, 37.9 mAP on AVA, and 50.4 R@1 on MSRVTT.

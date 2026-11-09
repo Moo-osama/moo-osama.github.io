@@ -1,7 +1,7 @@
 ---
 # Leave the homepage title empty to use the site title
 title: ''
-summary: 'Mohamed Abdelfattah is an AI Research Scientist and Computer Vision PhD researcher at EPFL VITA Lab, working on multimodal learning, egocentric vision, and LLMs.'
+summary: 'Mohamed Abdelfattah is an AI/ML Research Scientist at Apple in Zurich and holds a Ph.D. in Computer Vision from EPFL.'
 date: 2026-01-05
 type: landing
 
@@ -338,7 +338,7 @@ sections:
       text: |-
         I am always happy to discuss research collaborations, internships, and full-time opportunities in computer vision and multimodal learning.
         If you are hiring, collaborating, or want to chat about ideas, feel free to reach out.
-      email: mohamed.abdelfattah@epfl.ch
+      email: muhammad_osama@aucegypt.edu
       autolink: true
     design:
       columns: '1'

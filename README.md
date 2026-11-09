@@ -1,6 +1,6 @@
 # Mohamed Abdelfattah
 
-Personal academic website for Mohamed Abdelfattah, AI Research Scientist and Computer Vision PhD researcher at EPFL VITA Lab.
+Personal website for Mohamed Abdelfattah, AI/ML Research Scientist at Apple in Zurich and Computer Vision Ph.D. graduate of EPFL.
 
 Live site: https://moo-osama.github.io/
 

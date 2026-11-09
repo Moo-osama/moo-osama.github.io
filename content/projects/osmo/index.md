@@ -36,7 +36,6 @@ tech_stack:
   - Temporal Reasoning
 coming_soon: false
 external_link: "https://osmo-emos.github.io/"
-internship: "Meta"
 links:
   - type: live
     url: "https://osmo-emos.github.io/"

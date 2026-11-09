@@ -57,7 +57,10 @@
               {{ if . }}{{ $end_expected = true }}{{ end }}
             {{ end }}
 
-            {{ $date_display := strings.TrimSpace (printf "%v" (index . "date")) }}
+            {{ $date_display := "" }}
+            {{ with index . "date" }}
+              {{ $date_display = strings.TrimSpace (printf "%v" .) }}
+            {{ end }}
             {{ if gt $end_offset_months 0 }}
               {{ $date_display = time.Format $date_format (now.AddDate 0 $end_offset_months 0) }}
               {{ if $end_expected }}{{ $date_display = printf "%s (Expected)" $date_display }}{{ end }}
